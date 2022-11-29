@@ -1,0 +1,32 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:23403",
+      "sslPort": 44334
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "KeyOTSYSTEM": "9f9ae06d925be00f3d92dc2cd61cb700c623c5e5e7f56cc7d15f73bff4390544",
+        "CnnOTSYSTEM": "Data Source=10.0.0.87\\MSSQLSERVER2012;Database=OTSYSTEM;Persist Security Info=false;User Id=sa;Password=adv;Connection Timeout=30",
+        "UserSERVER": "root",
+        "PwdSERVER": "root",
+        "PortSERVER": "3308",
+        "UrlSERVER": "10.0.0.87",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DbNameSERVER": "retailgames"
+      }
+    },
+    "WSL 2": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    }
+  }
+}
