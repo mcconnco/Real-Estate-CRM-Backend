@@ -50,7 +50,7 @@ namespace CRMApi.Controllers
         {
             try
             {
-                RptApi = Srv.Delete(prm);
+                //RptApi = Srv.Delete(prm);
             }
             catch (Exception ex)
             {

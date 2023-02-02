@@ -56,15 +56,16 @@ namespace CRMApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RealEstateCRM", Version = "v1" });
             });
 
-            services.AddCors(options => {
-                options.AddPolicy(name: "AllowOrigin",
-                    builder =>
-                    {
-                        builder.AllowAnyOrigin();
-                        builder.AllowAnyHeader();
-                        builder.AllowAnyMethod();
-                    });
-            });
+            //services.AddCors(options => {
+            //    options.AddPolicy(name: "AllowOrigin",
+            //        builder =>
+            //        {
+            //            builder.AllowAnyOrigin();
+            //            builder.AllowAnyHeader();
+            //            builder.AllowAnyMethod();
+            //        });
+            //});
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,7 +82,14 @@ namespace CRMApi
 
             app.UseRouting();
 
-            app.UseCors("PermitirOrigen");
+            //app.UseCors("PermitirOrigen");
+
+            app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                                                        //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins separated with comma
+                    .AllowCredentials()); // allow credentials
 
             app.UseAuthentication();
 
