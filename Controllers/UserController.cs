@@ -1,0 +1,46 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using RealEstateCRM.ApiServices.Agent;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+
+namespace RealEstateCRM.Controllers
+{   [Authorize]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserController : ControllerBase
+    {
+        UserDto RptApi;
+        UserModel Model;
+        UserService Srv;
+        private readonly ILogger<UserController> _logger;
+        public UserController(ILogger<UserController> logger)
+        {
+            _logger = logger;
+            RptApi = new();
+            Model = new();
+            Srv = new();
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public UserDto createUser(UserModel prm)
+        {
+            try
+            {
+                RptApi = Srv.Create(prm);
+            }
+            catch (Exception ex)
+            {
+                RptApi.Success = false;
+                RptApi.Message = "An error has ocurred, " + ex.Message;
+                _logger.LogError(ex.Message);
+            }
+            return RptApi;
+        }
+    }
+}
