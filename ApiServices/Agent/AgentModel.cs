@@ -5,7 +5,16 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.ApiServices.Agent
 {
-    public class AgentModel
+    public class AgentModel 
+    {
+        public int id_agent { get; set; }
+        public int id_user { get; set; }
+        public string agent_number { get; set; }
+
+        public string sw_active { get; set; }
+    }
+
+    public class AgentClientModel
     {
         public int id_agent { get; set; }
         public string first_name { get; set; }
