@@ -101,61 +101,7 @@ namespace RealEstateCRM.ApiServices.Agent
                 if (DsTable.Count > 0)
                 {
                     resp.Success = true;
-                    resp.Message = "User created successfully!";
-
-                }
-                else
-                {
-                    resp.Success = false;
-                    resp.Message = "An error has ocurred";
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return resp;
-        }
-        public UserDto Update(User model)
-        {
-            resp = new();
-            try
-            {
-                AccessData = new();
-                var Ds = AccessData.update_user(model);
-                var DsTable = Ds.Rows;
-
-                if (DsTable.Count > 0)
-                {
-                    resp.Success = true;
-                    resp.Message = "User updated successfully!";
-
-                }
-                else
-                {
-                    resp.Success = false;
-                    resp.Message = "An error has ocurred";
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return resp;
-        }
-        public UserDto Deactivate(UserDelete model)
-        {
-            resp = new();
-            try
-            {
-                AccessData = new();
-                var Ds = AccessData.delete_user(model);
-                var DsTable = Ds.Rows;
-
-                if (DsTable.Count > 0)
-                {
-                    resp.Success = true;
-                    resp.Message = "User deactivated successfully!";
+                    resp.Message = "Interest created successfully!";
 
                 }
                 else
