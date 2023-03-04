@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,21 @@ namespace RealEstateCRM.ApiServices.Agent
     {
         private UserDto resp;
         private UserData AccessData;
+
+        private static UserResult CastDataUser(DataRow dr)
+        {
+            UserResult r = new();
+            r.id_user = (int)dr["id_user"];
+            r.first_name = (string)dr["first_name"];
+            r.last_name = (string)dr["last_name"];
+            r.sw_active = (int)dr["sw_active"];
+            r.sw_admin = (int)dr["sw_admin"];
+            r.sw_agent = (int)dr["sw_agent"];
+            var id_user = dr["id_user_create"];
+            r.id_user_create = id_user == null ? (int)id_user : 0;
+            r.datetime_create = (DateTime)dr["datetime_create"];
+            return r;
+        }
 
         public UserDto GetAll()
         {
@@ -22,8 +38,15 @@ namespace RealEstateCRM.ApiServices.Agent
                 if (DsTable.Count > 0)
                 {
                     resp.Success = true;
-                    resp.Message = "User updated successfully!";
+                    resp.Message = "User list retrieved successfully!";
+                    resp.Users = new();
 
+                    for (int i = 0; i < DsTable.Count; i++)
+                    {
+                        UserResult u = new();
+                        u = CastDataUser(DsTable[i]);
+                        resp.Users.Add(u);
+                    }
                 }
                 else
                 {
