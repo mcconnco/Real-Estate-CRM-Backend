@@ -73,7 +73,6 @@ namespace RealEstateCRM.ApiServices.Agent
                 {
                     resp.Success = true;
                     resp.Message = "User updated successfully!";
-
                 }
                 else
                 {

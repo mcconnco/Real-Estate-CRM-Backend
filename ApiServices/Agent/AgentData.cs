@@ -28,7 +28,7 @@ namespace RealEstateCRM.ApiServices.Agent
             }
             else
             {
-                //Handle Error
+                return DT;
             }
             return DT;
         }

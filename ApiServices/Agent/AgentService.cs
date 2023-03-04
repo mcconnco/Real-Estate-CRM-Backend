@@ -22,8 +22,17 @@ namespace RealEstateCRM.ApiServices.Agent
 
                 if (DsTable.Count > 0)
                 {
-                    resp.Success = true;
-                    resp.Message = "Agent created successfully!";
+                    DataRow row = DsTable[0];
+                    string message = (string)row["status"];
+                    if (message == null)
+                    {
+                        resp.Success = false;
+                        resp.Message = "Invalid user";
+                    } else
+                    {
+                        resp.Success = true;
+                        resp.Message = "Agent created successfully!";
+                    }
                 }
                 else 
                 {

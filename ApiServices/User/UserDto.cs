@@ -9,6 +9,7 @@ namespace RealEstateCRM.ApiServices.Agent
     {
         public bool Success { get; set; }
         public string Message { get; set; }
+        public UserResult User { get; set; }
         public List<UserResult> Users { get; set; }
     }
     public class UserResult
