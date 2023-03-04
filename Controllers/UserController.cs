@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 
 namespace RealEstateCRM.Controllers
-{   [Authorize]
+{   
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -59,10 +60,14 @@ namespace RealEstateCRM.Controllers
             }
             return RptApi;
         }
+<<<<<<< Updated upstream
+        //api/User/getUser/?id_user=1
+=======
         //api/User/getUser/?user_id=1
-        [HttpGet("user_id")]
+>>>>>>> Stashed changes
+        [HttpGet]
         [Route("getUser")]
-        public UserDto getUser(int id_user)
+        public UserDto getUser([FromQuery] int id_user)
         {
             try
             {
