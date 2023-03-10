@@ -60,6 +60,8 @@ namespace RealEstateCRM.ApiServices.Agent
                 mySql.addParameterIN("_last_name", model.last_name);
                 mySql.addParameterIN("_username", model.username);
                 mySql.addParameterIN("_password", model.password);
+                mySql.addParameterIN("_email", model.email);
+                mySql.addParameterIN("_phone_num", model.phone_num);
                 mySql.addParameterIN("_id_user_create", model.id_user_create);
                 mySql.addParameterIN("_sw_admin", model.sw_admin);
                 mySql.addParameterIN("_sw_agent", model.sw_agent);
@@ -84,6 +86,8 @@ namespace RealEstateCRM.ApiServices.Agent
                 mySql.addParameterIN("_last_name", model.last_name);
                 mySql.addParameterIN("_username", model.username);
                 mySql.addParameterIN("_password", model.password);
+                mySql.addParameterIN("_email", model.email);
+                mySql.addParameterIN("_phone_num", model.phone_num);
                 mySql.addParameterIN("_sw_active", model.sw_active);
                 mySql.addParameterIN("_sw_change_pass", model.sw_change_pass);
                 mySql.addParameterIN("_id_user_mod", model.id_user_mod);
