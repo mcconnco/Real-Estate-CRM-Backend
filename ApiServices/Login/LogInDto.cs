@@ -23,6 +23,8 @@ namespace CRMApi.ApiServices.Login
         public int Id_role { get; set; }
         public string Role_desc { get; set; }
         public int Role_level { get; set; }
+        public int Id_agent { get; set; }
+        public string Agent_Number { get; set; }
     }
 
     public class Permission
