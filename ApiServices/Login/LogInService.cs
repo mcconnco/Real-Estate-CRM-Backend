@@ -20,6 +20,8 @@ namespace CRMApi.ApiServices.Login
             r.Id_role = (int)dr["id_role"];
             r.Role_desc = (string)dr["role_desc"];
             r.Role_level = (int)dr["role_level"];
+            r.Id_agent = (int)dr["id_agent"];
+            r.Agent_Number = (string)dr["agent_number"];
             return r;
         }
         private static Permission CastDataPermission(DataRow dr)
@@ -74,19 +76,19 @@ namespace CRMApi.ApiServices.Login
                         else
                         {
                             response.Success = true;
-                            response.Message = "El usuario no tiene permisos.";
+                            response.Message = "The user doesn't have permissions.";
                         }
                     }
                     else
                     {
                         response.Success = false;
-                        response.Message = $"El usuario {Prm.User} Se encuentra inactivo. Contacte al administrador.";
+                        response.Message = $"The user {Prm.User} is inactive. Contact admin";
                     }
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = $"No existe usuario {Prm.User}. Debe validar usuario y contraseña.";
+                    response.Message = $"The user {Prm.User} does not exist. Validate username and password";
                 }
             }
             catch (Exception)
