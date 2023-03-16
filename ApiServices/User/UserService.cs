@@ -72,7 +72,13 @@ namespace RealEstateCRM.ApiServices.Agent
                 if (DsTable.Count > 0)
                 {
                     resp.Success = true;
-                    resp.Message = "User updated successfully!";
+                    foreach (DataRow rows in Ds.Rows)
+                    {
+                        foreach (DataColumn col in Ds.Columns)
+                        {
+                            resp.Message += rows[col] + " ";
+                        }
+                    }
                 }
                 else
                 {
