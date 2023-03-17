@@ -17,6 +17,9 @@ namespace RealEstateCRM.ApiServices.Agent
             r.id_user = (int)dr["id_user"];
             r.first_name = (string)dr["first_name"];
             r.last_name = (string)dr["last_name"];
+            r.email = (string)dr["email"];
+            r.phone_num = (string)dr["phone_num"];
+            r.username = (string)dr["username"];
             r.sw_active = (int)dr["sw_active"];
             r.sw_admin = (int)dr["sw_admin"];
             r.sw_agent = (int)dr["sw_agent"];
@@ -72,13 +75,8 @@ namespace RealEstateCRM.ApiServices.Agent
                 if (DsTable.Count > 0)
                 {
                     resp.Success = true;
-                    foreach (DataRow rows in Ds.Rows)
-                    {
-                        foreach (DataColumn col in Ds.Columns)
-                        {
-                            resp.Message += rows[col] + " ";
-                        }
-                    }
+                    resp.User = CastDataUser(DsTable[0]);
+                    resp.Message = "User read successfull!";
                 }
                 else
                 {
