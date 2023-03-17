@@ -72,7 +72,8 @@ namespace RealEstateCRM.ApiServices.Agent
                 if (DsTable.Count > 0)
                 {
                     resp.Success = true;
-                    resp.Message = "User updated successfully!";
+                    resp.User = CastDataUser(DsTable[0]);
+                    resp.Message = "User read successfull!";
                 }
                 else
                 {
