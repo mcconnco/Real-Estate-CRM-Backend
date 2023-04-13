@@ -85,7 +85,7 @@ namespace CRMApi
             //app.UseCors("PermitirOrigen");
 
             app.UseCors(x => x
-                    .AllowAnyOrigin()
+                    //.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .SetIsOriginAllowed(origin => true) // allow any origin
