@@ -51,6 +51,23 @@ namespace RealEstateCRM.ApiServices.Agent
             }
             return DT;
         }
+        public DataTable read_agent_by_number(AgentByNumberModel model)
+        {
+            DataTable DT = new DataTable();
+
+            mySql.executeSP("read_by_agent_number");
+            if (mySql.conn_status == true)
+            {
+
+                mySql.addParameterIN("_agent_number", model.agent_number);
+                DT = mySql.getTableSP();
+            }
+            else
+            {
+                // Handle Error
+            }
+            return DT;
+        }
 
         public DataTable update_agent(AgentModel model)
         {
