@@ -13,6 +13,10 @@ namespace RealEstateCRM.ApiServices.Agent
 
         public string sw_active { get; set; }
     }
+    public class AgentByNumberModel
+    {
+        public string agent_number { get; set; }
+    }
 
     public class AgentClientModel
     {

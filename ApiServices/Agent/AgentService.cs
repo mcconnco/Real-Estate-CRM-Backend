@@ -11,6 +11,17 @@ namespace RealEstateCRM.ApiServices.Agent
         private AgentDto resp;
         private AgentData AccessData;
 
+        private static AgentResult CastDataUser(DataRow dr)
+        {
+            AgentResult r = new();
+            r.agent_number = (string)dr["agent_number"];
+            r.first_name = (string)dr["first_name"];
+            r.last_name = (string)dr["last_name"];
+            r.email = (string)dr["email"];
+            r.phone_num = (string)dr["phone_num"];
+            return r;
+
+        }
         public AgentDto addAgent(AgentModel model)
         {
             resp = new();
@@ -80,6 +91,41 @@ namespace RealEstateCRM.ApiServices.Agent
             return resp;
         }
 
+        public AgentDto getAgentByNumber(AgentByNumberModel model)
+        {
+            resp = new();
+            try
+            {
+                AccessData = new();
+                var Ds = AccessData.read_agent_by_number(model);
+                var DsTable = Ds.Rows;
+
+                if (DsTable.Count > 0)
+                {
+                    resp.Success = true;
+                    resp.Message = "Agent retrieved successfully!";
+                    resp.Agent = new();
+
+
+                    for (int i = 0; i < DsTable.Count; i++)
+                    {
+                        AgentResult u = new();
+                        u = CastDataUser(DsTable[i]);
+                        resp.Agent = u;
+                    }
+                }
+                else
+                {
+                    resp.Success = false;
+                    resp.Message = "An error has occurred";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return resp;
+        }
         public AgentDto updateAgent(AgentModel model)
         {
             resp = new();
