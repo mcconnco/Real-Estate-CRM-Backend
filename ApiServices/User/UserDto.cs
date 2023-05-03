@@ -27,5 +27,11 @@ namespace RealEstateCRM.ApiServices.Agent
         public DateTime datetime_create { get; set; }
     }
 
+    public class UserDBResponse
+    {
+        public string status { get; set; }
+        public string msg { get; set; }
+    }
+
 
 }

@@ -28,6 +28,14 @@ namespace RealEstateCRM.ApiServices.Agent
             r.datetime_create = (DateTime)dr["datetime_create"];
             return r;
         }
+        private static UserDBResponse CastDBResponse(DataRow dr)
+        {
+            UserDBResponse db = new();
+            db.status = (string)dr["status"];
+            db.msg = (string)dr["msg"];
+            return db;
+
+        }
 
         public UserDto GetAll()
         {
@@ -103,9 +111,9 @@ namespace RealEstateCRM.ApiServices.Agent
 
                 if (DsTable.Count > 0)
                 {
-                    resp.Success = true;
-                    resp.Message = "Interest created successfully!";
-
+                    UserDBResponse dbResponse = CastDBResponse(DsTable[0]);
+                    resp.Success = (dbResponse.status == "OK") ? true : false;
+                    resp.Message = dbResponse.msg;
                 }
                 else
                 {
