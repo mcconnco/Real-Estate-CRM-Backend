@@ -15,7 +15,7 @@ All of our documentation and API description/usage is documented through Swagger
 ![Capture2](https://github.com/mcconnco/Real-Estate-CRM-Backend/assets/45697531/c1b34974-01f0-4e52-b35b-22b8b03ec785)
 
 
-#### Authenticate user
+#### Example method Authenticate user
 This validates the user and password, returns its credentials including menus allowed to access.
 ```http
   POST /api/Auth/authenticate
