@@ -83,9 +83,11 @@ namespace RealEstateCRM.ApiServices.Client
                 mySql.addParameterIN("_last_name", model.last_name);
                 mySql.addParameterIN("_address", model.address);
                 mySql.addParameterIN("_city", model.city);
+                mySql.addParameterIN("_email", model.email);
                 mySql.addParameterIN("_phone_num", model.phone_num);
-                mySql.addParameterIN("_id_client", model.id_client);
                 mySql.addParameterIN("_sw_active", model.sw_active);
+                mySql.addParameterIN("_id_client", model.id_client);
+                mySql.addParameterIN("_id_agent", model.id_agent);
                 DT = mySql.getTableSP();
             }
             else
