@@ -71,12 +71,12 @@ namespace CRMApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RealEstateCRM v1"));
-            }
+            //}
 
             app.UseHttpsRedirection();
 
@@ -85,6 +85,7 @@ namespace CRMApi
             //app.UseCors("PermitirOrigen");
 
             app.UseCors(x => x
+                    //.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .SetIsOriginAllowed(origin => true) // allow any origin
@@ -94,7 +95,7 @@ namespace CRMApi
             app.UseAuthentication();
 
             app.UseAuthorization();
-
+            app.UseHttpsRedirection();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

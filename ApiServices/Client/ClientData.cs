@@ -5,23 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RealEstateCRM.ApiServices.Agent
+namespace RealEstateCRM.ApiServices.Client
 {
-    public class UserData
+    public class ClientData
     {
         OsuMySqlHelper mySql;
-        internal UserData()
+        internal ClientData()
         {
             mySql = new OsuMySqlHelper(OsuMySqlHelper.getConnectionString());
         }
-
-        public DataTable getAll_Users()
+        public DataTable read_all_clients(ClientModel model)
         {
             DataTable DT = new DataTable();
 
-            mySql.executeSP("read_all_users");
+            mySql.executeSP("read_all_clients");
             if (mySql.conn_status == true)
             {
+                mySql.addParameterIN("_id_agent", model.id_agent);
                 DT = mySql.getTableSP();
             }
             else
@@ -29,42 +29,20 @@ namespace RealEstateCRM.ApiServices.Agent
                 //Handle Error
             }
             return DT;
-
         }
-        public DataTable getUser(int id_user)
+        public DataTable create_client(ClientModel model)
         {
             DataTable DT = new DataTable();
 
-            mySql.executeSP("read_user");
-            if (mySql.conn_status == true)
+            mySql.executeSP("create_client");
+            if(mySql.conn_status == true)
             {
-                mySql.addParameterIN("_id_user", id_user);
-                DT = mySql.getTableSP();
-            }
-            else
-            {
-                //Handle Error
-            }
-            return DT;
-
-        }
-        public DataTable register_user(UserModel model)
-        {
-            DataTable DT = new DataTable();
-
-            mySql.executeSP("proc_register_user");
-            if (mySql.conn_status == true)
-            {
-                mySql.addParameterIN("_agent_number", model.agent_number);
                 mySql.addParameterIN("_first_name", model.first_name);
                 mySql.addParameterIN("_last_name", model.last_name);
-                mySql.addParameterIN("_username", model.username);
-                mySql.addParameterIN("_password", model.password);
+                mySql.addParameterIN("_address", model.address);
+                mySql.addParameterIN("_city", model.city);
                 mySql.addParameterIN("_email", model.email);
                 mySql.addParameterIN("_phone_num", model.phone_num);
-                mySql.addParameterIN("_id_user_create", model.id_user_create);
-                mySql.addParameterIN("_sw_admin", model.sw_admin);
-                mySql.addParameterIN("_sw_agent", model.sw_agent);
                 DT = mySql.getTableSP();
             }
             else
@@ -74,47 +52,67 @@ namespace RealEstateCRM.ApiServices.Agent
             return DT;
         }
 
-        public DataTable update_user(User model)
+        public DataTable read_client(ClientModel model)
         {
             DataTable DT = new DataTable();
 
-            mySql.executeSP("update_user");
-            if (mySql.conn_status == true)
+            mySql.executeSP("read_client");
+            if(mySql.conn_status == true)
             {
-                mySql.addParameterIN("_id_user", model.id_user);
                 mySql.addParameterIN("_first_name", model.first_name);
                 mySql.addParameterIN("_last_name", model.last_name);
-                mySql.addParameterIN("_username", model.username);
-                mySql.addParameterIN("_password", model.password);
+                mySql.addParameterIN("_address", model.address);
+                mySql.addParameterIN("_phone_num", model.phone_num);
+                DT = mySql.getTableSP();
+            }
+            else
+            {
+                // Handle Error
+            }
+            return DT;
+        }
+
+        public DataTable update_client(ClientModel model)
+        {
+            DataTable DT = new DataTable();
+
+            mySql.executeSP("update_client");
+            if(mySql.conn_status == true)
+            {
+                mySql.addParameterIN("_first_name", model.first_name);
+                mySql.addParameterIN("_last_name", model.last_name);
+                mySql.addParameterIN("_address", model.address);
+                mySql.addParameterIN("_city", model.city);
                 mySql.addParameterIN("_email", model.email);
                 mySql.addParameterIN("_phone_num", model.phone_num);
                 mySql.addParameterIN("_sw_active", model.sw_active);
-                mySql.addParameterIN("_sw_change_pass", model.sw_change_pass);
-                mySql.addParameterIN("_id_user_mod", model.id_user_mod);
+                mySql.addParameterIN("_id_client", model.id_client);
+                mySql.addParameterIN("_id_agent", model.id_agent);
                 DT = mySql.getTableSP();
             }
             else
             {
-                //Handle Error
+                // Handle Error
             }
             return DT;
         }
-        public DataTable delete_user(UserDelete model)
+
+        public DataTable delete_client(ClientModel model)
         {
             DataTable DT = new DataTable();
 
-            mySql.executeSP("update_user");
-            if (mySql.conn_status == true)
+            mySql.executeSP("delete_client");
+            if(mySql.conn_status == true)
             {
-                mySql.addParameterIN("_id_user", model.id_user);
-                mySql.addParameterIN("_id_user_mod", model.id_user_mod);
+                mySql.addParameterIN("_id_client", model.id_client);
                 DT = mySql.getTableSP();
             }
             else
             {
-                //Handle Error
+                // Handle Error
             }
             return DT;
         }
+
     }
 }

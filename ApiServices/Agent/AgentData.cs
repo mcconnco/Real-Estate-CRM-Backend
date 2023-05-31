@@ -14,8 +14,99 @@ namespace RealEstateCRM.ApiServices.Agent
         {
             mySql = new OsuMySqlHelper(OsuMySqlHelper.getConnectionString());
         }
+        
+        public DataTable create_agent(AgentModel model)
+        {
+            DataTable DT = new DataTable();
 
-        public DataTable create_client(AgentModel model)
+            mySql.executeSP("create_agent");
+            if(mySql.conn_status == true)
+            {
+                mySql.addParameterIN("_id_user", model.id_user);
+                mySql.addParameterIN("_agent_number", model.agent_number);
+                DT = mySql.getTableSP();
+            }
+            else
+            {
+                return DT;
+            }
+            return DT;
+        }
+
+        public DataTable read_agent(AgentModel model)
+        {
+            DataTable DT = new DataTable();
+
+            mySql.executeSP("read_agent");
+            if(mySql.conn_status == true)
+            {
+                mySql.addParameterIN("_id_agent", model.id_agent);
+                mySql.addParameterIN("_id_user", model.id_user);
+                mySql.addParameterIN("_agent_number", model.agent_number);
+                DT = mySql.getTableSP();
+            }
+            else
+            {
+                // Handle Error
+            }
+            return DT;
+        }
+        public DataTable read_agent_by_number(AgentByNumberModel model)
+        {
+            DataTable DT = new DataTable();
+
+            mySql.executeSP("read_by_agent_number");
+            if (mySql.conn_status == true)
+            {
+
+                mySql.addParameterIN("_agent_number", model.agent_number);
+                DT = mySql.getTableSP();
+            }
+            else
+            {
+                // Handle Error
+            }
+            return DT;
+        }
+
+        public DataTable update_agent(AgentModel model)
+        {
+            DataTable DT = new DataTable();
+
+            mySql.executeSP("update_agent");
+            if(mySql.conn_status == true)
+            {
+                mySql.addParameterIN("_id_user", model.id_user);
+                mySql.addParameterIN("_id_agent", model.id_agent);
+                mySql.addParameterIN("_agent_number", model.agent_number);
+                mySql.addParameterIN("_sw_active", model.sw_active);
+                DT = mySql.getTableSP();
+            }
+            else
+            {
+                // Handle Error
+            }
+            return DT;
+        }
+
+        public DataTable delete_agent(AgentModel model)
+        {
+            DataTable DT = new DataTable();
+
+            mySql.executeSP("delete_agent");
+            if(mySql.conn_status == true)
+            {
+                mySql.addParameterIN("_id_agent", model.id_agent);
+                DT = mySql.getTableSP();
+            }
+            else
+            {
+                // Handle Error
+            }
+            return DT;
+        }
+
+        public DataTable create_agent_client(AgentClientModel model)
         {
             DataTable DT = new DataTable();
 

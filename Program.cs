@@ -21,6 +21,7 @@ namespace CRMApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseSetting("https_port", "44334");
                 });
     }
 }
