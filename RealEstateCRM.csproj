@@ -1,3 +1,5 @@
+<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.targets" />
+
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
@@ -7,8 +9,6 @@
     <Copyright>2022 Oregon State University</Copyright>
     <UserSecretsId>f0eb46a7-b1ca-4da4-b9bb-a61a9e87ba15</UserSecretsId>
   </PropertyGroup>
-
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.targets" />
   
   <ItemGroup>
     <Compile Remove="Logs\**" />
