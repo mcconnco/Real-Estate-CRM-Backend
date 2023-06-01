@@ -89,7 +89,7 @@ namespace CRMApi
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .SetIsOriginAllowed(origin => true) // allow any origin
-                                                        //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins separated with comma
+                                                        //.WithOrigins("http://fastlinkcrm.azurewebsites.net")); // Allow only this origin can also have multiple origins separated with comma
                     .AllowCredentials()); // allow credentials
 
             app.UseAuthentication();
