@@ -1,5 +1,3 @@
-<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.targets" />
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Company></Company>
