@@ -54,4 +54,4 @@ jobs:
           app-name: 'fastlinkcrm'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_48811ABED0C54EADAA22E8620948C303 }}
-          package: .
+          package: './published'
